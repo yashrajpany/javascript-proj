@@ -33,9 +33,15 @@ if(guess === winNum){
     guessInput.disabled = true;
     guessAgain();
 }else {
-    setmessage(`${guess} isn't right. You are left with ${guessLeft} guess left`, 'red');
-    guessInput.value = " ";
-    guessLeft--;
+    if(guess< winNum){
+        setmessage(`The number is greater than ${guess}.You are left with ${guessLeft} guess left`, 'red');
+        guessInput.value = " ";
+        guessLeft--;
+    } else {
+        setmessage(`The number is less than ${guess}.You are left with ${guessLeft} guess left`, 'red');
+        guessInput.value = " ";
+        guessLeft--;
+    }
     if(guessLeft === 0){
         guessInput.disabled = true;
         setmessage(`Game Over. The corrrect number was ${winNum}. Better luck next time.`, 'red');
